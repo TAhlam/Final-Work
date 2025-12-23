@@ -1,0 +1,63 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install dependencies
+        run: npm install --force
+
+      - name: Run linter
+        run: npm run lint --if-present
+        continue-on-error: true
+
+      - name: Run unit tests
+        run: npm test -- --watch=false --no-progress --browsers=ChromeHeadless
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        continue-on-error: false
+
+      - name: Build production bundle
+        run: npm run build -- --configuration=production 2>&1 || true
+        env:
+          NG_CLI_ANALYTICS: false
+
+      - name: Verify build output
+        run: |
+          if [ -d "dist/my-shop" ]; then
+            echo "✅ Build successful!"
+            ls -la dist/my-shop/
+          else
+            echo "❌ Build failed - dist folder not found"
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 5
+
+

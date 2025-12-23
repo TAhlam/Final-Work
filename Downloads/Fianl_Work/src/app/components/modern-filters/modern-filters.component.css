@@ -1,0 +1,167 @@
+/* Filter Card Container */
+.filter-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0 4px;
+}
+
+/* Filter Header */
+.filter-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.filter-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-icon {
+  color: var(--mat-sys-primary);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.filter-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--mat-sys-on-surface);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.filter-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-height: 20px;
+  padding: 0 6px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 0;
+  transform: scale(0.8);
+}
+
+/* Accordion Styling */
+.filter-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.vertical-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Price Range */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-field {
+  flex: 1;
+}
+
+.separator {
+  color: var(--mat-sys-outline);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.price-slider {
+  width: 100%;
+  margin-top: -0.5rem;
+  display: block;
+  padding: 0 8px;
+}
+
+/* Rating Chips */
+.rating-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Material Overrides */
+::ng-deep .filter-card .mat-expansion-panel {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .filter-card .mat-expansion-panel-header {
+  padding: 0 16px !important;
+  height: 40px !important;
+  justify-content: center !important;
+}
+
+::ng-deep .filter-card .mat-expansion-panel-header-title {
+  font-weight: 600;
+  color: var(--mat-sys-on-surface);
+  font-size: 0.85rem;
+  flex: 0 0 auto !important;
+  margin-right: 8px !important;
+}
+
+::ng-deep .filter-card .mat-content {
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+}
+
+::ng-deep .filter-card .mat-expansion-indicator {
+  margin: 0 !important;
+}
+
+::ng-deep .filter-card .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+::ng-deep .filter-card .mat-mdc-radio-button .mdc-label {
+  font-size: 0.85rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+::ng-deep .filter-card .mat-mdc-form-field {
+  width: 100%;
+}
+
+::ng-deep .filter-card .mat-mdc-text-field-wrapper {
+  background-color: white !important;
+  padding: 0 12px !important;
+}
+
+::ng-deep .filter-card .mat-mdc-form-field-input-control {
+  color: var(--mat-sys-on-surface) !important;
+  font-size: 0.9rem !important;
+}
+
+::ng-deep .filter-card .mat-mdc-select-value {
+  color: var(--mat-sys-on-surface) !important;
+  font-size: 0.9rem !important;
+}
+
+/* Hide Scrollbar */
+::ng-deep .filters-sidenav::-webkit-scrollbar {
+  display: none;
+}
+::ng-deep .filters-sidenav {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
